@@ -1,0 +1,23 @@
+﻿apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-app-siteb
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Valery00781/gitops-proto.git
+    targetRevision: main
+    path: demo-app-chart
+    helm:
+      valueFiles:
+        - values-siteB.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: site-b
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
