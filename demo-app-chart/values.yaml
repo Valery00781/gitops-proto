@@ -1,5 +1,5 @@
 ﻿replicaCount: 1
 image:
-  repository: nginx
-  tag: alpine
+  repository: quay.io/valery844/gitops-proto
+  tag: v1
 namespace: site-a
